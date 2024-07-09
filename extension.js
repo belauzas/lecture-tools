@@ -41,8 +41,7 @@ function activate(context) {
 			return;
 		}
 
-		// const lectureDurationInMinutes = 67.5;
-		const lectureDurationInMinutes = 0.2;
+		const lectureDurationInMinutes = 67.5;
 		const endTime = Date.now() + lectureDurationInMinutes * 60000;
 		context.globalState.update('lecture.ending', endTime);
 
@@ -60,7 +59,7 @@ function activate(context) {
 			}
 		);
 		statusBar.breakButton.hide();
-		panel.webview.html = getWebviewContent(0.2);
+		panel.webview.html = getWebviewContent(15);
 
 		panel.onDidDispose(() => {
 			statusBar.text.text = '$(feedback) Paskaita';
@@ -123,7 +122,7 @@ function timer(minutes) {
 		}
 		const mili = diff % 1000;
 		const sec = (diff - mili) / 1000 % 60;
-		const min = (diff - mili - sec * 1000) / 60;
+		const min = (diff - mili - sec * 1000) / 60000;
 
 		const printSec = (sec < 10 ? '0' : '') + sec;
 		let printMili = mili;
